@@ -1,19 +1,6 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { LinhasComponent } from './components/linhas/linhas.component';
-
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, LinhasComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
-})
-export class AppComponent {
-  
-
-  palavras: string[] = [
-    "exceto", "cínico", "idôneo", "âmbito", "néscio", "mister", "índole", "vereda", "apogeu", 
+{
+    "palavras": [
+      "exceto", "cínico", "idôneo", "âmbito", "néscio", "mister", "índole", "vereda", "apogeu", 
       "inócuo", "defina", "convém", "utopia", "escopo", "sádico", "ênfase", "idiota", "mérito", 
       "alusão", "casual", "hostil", "anseio", "cético", "legado", "gentil", "hétero", "pressa", 
       "alheio", "paixão", "nocivo", "clichê", "infame", "exímio", "afável", "dádiva", "adorno", 
@@ -66,19 +53,6 @@ export class AppComponent {
       "côvado", "lisura", "jardim", "despir", "caução", "doença", "trevas", "jocoso", "regido", 
       "ambas", "então", "enviar", "conciso", "ativo", "ontem", "alçada", "vulgar", "vários", 
       "mistura", "armazen", "músicas"
-  ];
-
-  nomeAleatorio: string = '';
-
-  constructor() { }
-
-  ngOnInit(): void {
-    this.sortearNome();
+    ]
   }
-
-  sortearNome(): void {
-    const indiceAleatorio = Math.floor(Math.random() * this.palavras.length);
-    this.nomeAleatorio = this.palavras[indiceAleatorio];
-  }
-
-}
+  

@@ -1,0 +1,24 @@
+input{
+    border: 10px solid rgb(124, 124, 124);
+    border-radius: 30px;
+    background-color: rgb(54, 54, 54);
+    font-size: 5em;
+    width: 1.2em;
+    height: 1.2em;
+    color: white;
+    text-align: center;
+    outline: none;
+    caret-color: transparent;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+input:active , input:focus  {
+    background-color: rgb(92, 92, 92);
+}
+
+.linha{
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
