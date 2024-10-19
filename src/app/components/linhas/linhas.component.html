@@ -1,14 +1,11 @@
 <div class="linha">
+    
+    <input [ngStyle]="{ 'background-color': background_letra[0] }" type="text" name="letra1" id="letra1" #letra1Input autocomplete="off" maxlength="1" [disabled]="desabilitarInputs">
+    <input [ngStyle]="{ 'background-color': background_letra[1] }" type="text" name="letra2" id="letra2" #letra2Input autocomplete="off" maxlength="1" [disabled]="desabilitarInputs">
+    <input [ngStyle]="{ 'background-color': background_letra[2] }" type="text" name="letra3" id="letra3" #letra3Input autocomplete="off" maxlength="1" [disabled]="desabilitarInputs">
+    <input [ngStyle]="{ 'background-color': background_letra[3] }" type="text" name="letra4" id="letra4" #letra4Input autocomplete="off" maxlength="1" [disabled]="desabilitarInputs">
+    <input [ngStyle]="{ 'background-color': background_letra[4] }" type="text" name="letra5" id="letra5" #letra5Input autocomplete="off" maxlength="1" [disabled]="desabilitarInputs">
+    <input [ngStyle]="{ 'background-color': background_letra[5] }" type="text" name="letra6" id="letra6" #letra6Input autocomplete="off" maxlength="1" [disabled]="desabilitarInputs">
 
-    <input type="text" name="letra1" id="letra1" autocomplete="off" maxlength="1">
-
-    <input type="text" name="letra2" id="letra2" autocomplete="off" maxlength="1">
-
-    <input type="text" name="letra3" id="letra3" autocomplete="off" maxlength="1">
-
-    <input type="text" name="letra4" id="letra4" autocomplete="off" maxlength="1">
-
-    <input type="text" name="letra5" id="letra5" autocomplete="off" maxlength="1">
-
-    <input type="text" name="letra6" id="letra6" autocomplete="off" maxlength="1">
-</div>
+    <input type="button" class="resposta" (click)="mostraResposta()" value="Ir">
+</div><br>

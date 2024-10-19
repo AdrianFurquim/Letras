@@ -22,3 +22,11 @@ input:active , input:focus  {
     justify-content: center;
     gap: 1em;
 }
+
+.resposta{
+    background-color: blue;
+    width: 1.6em;
+    height: 1.2em;
+    font-size: 3em;
+    border: 3px solid rgb(124, 124, 124);
+}
