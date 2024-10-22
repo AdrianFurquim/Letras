@@ -32,12 +32,19 @@ export class LinhasComponent {
   background_letra: string[] =  ["rgb(54, 54, 54)", "rgb(54, 54, 54)", "rgb(54, 54, 54)", "rgb(54, 54, 54)", "rgb(54, 54, 54)", "rgb(54, 54, 54)"];
 
   // Funções. =============================================================================================================================================
+  
+  // Ao iniciar o component já fornece a palavra escolhida da vez.
+  ngOnInit(): void {
+    this.nomeAleatorio_service = this.palavraCorreta.getPalavraCorreta();
+    this.letras_correto = [this.nomeAleatorio_service[0], this.nomeAleatorio_service[1], this.nomeAleatorio_service[2], 
+                    this.nomeAleatorio_service[3], this.nomeAleatorio_service[4], this.nomeAleatorio_service[5]];
+  };
 
   // Função para quando teclar 'Enter' irá fazer a correção da tentativa.
   @HostListener('document:keydown.enter', ['$event'])
   handleEnterPress(event: KeyboardEvent) {
     this.mostraResposta();
-  }
+  };
 
   // Função para correção da tentativa.
   corrigirLetra(resposta: string[]) {
@@ -48,8 +55,8 @@ export class LinhasComponent {
     for (let index = 0; index < resposta.length; index++) {
       if (resposta[index] !== '') {
         quantLetras++;
-      }
-    }
+      };
+    };
     
     // Verifica se todos os 6 inputs estão preenchidos.
     if (quantLetras === 6) {
@@ -69,16 +76,19 @@ export class LinhasComponent {
       this.desabilitarInputs = true;
     } else {
     }
-  }
+  };
 
+  // Função para ao inserir uma letra no input, passa para o próximo input.
   moverProximoInput(atualInput: HTMLInputElement, proximoInput: HTMLInputElement) {
+    // Move o foco para o próximo input caso o usuário insira uma letra no campo atual.
     if (atualInput.value.length === 1) {
-      proximoInput.focus(); // Move o foco para o próximo input
+      proximoInput.focus();
     }
   }
 
+  // Função para ao apagar uma letra no input, passa para o input anterior.
   moverAnteriorInput(event: KeyboardEvent, anteriorInput: HTMLInputElement | null, atualInput: HTMLInputElement) {
-    // Move o foco para o input anterior se "Backspace" for pressionado e o campo atual estiver vazio
+    // Move o foco para o input anterior se "Backspace" for pressionado e o campo atual estiver vazio.
     if (event.key === 'Backspace' && atualInput.value.length === 0 && anteriorInput) {
       anteriorInput.focus(); 
     }
@@ -86,22 +96,12 @@ export class LinhasComponent {
 
   // Função para pegar os valores e corrigir posições.
   mostraResposta() {
-    const letra1Value = this.letra1Input.nativeElement.value;
-    const letra2Value = this.letra2Input.nativeElement.value;
-    const letra3Value = this.letra3Input.nativeElement.value;
-    const letra4Value = this.letra4Input.nativeElement.value;
-    const letra5Value = this.letra5Input.nativeElement.value;
-    const letra6Value = this.letra6Input.nativeElement.value;
+    // criando array com os valores dos inputs.
+    const resposta: string[] = [this.letra1Input.nativeElement.value, this.letra2Input.nativeElement.value, this.letra3Input.nativeElement.value, 
+      this.letra4Input.nativeElement.value, this.letra5Input.nativeElement.value, this.letra6Input.nativeElement.value];
 
-    const resposta: string[] = [letra1Value, letra2Value, letra3Value, letra4Value, letra5Value, letra6Value];
-
+    // Rodando a função de corrigir a tentativa.
     this.corrigirLetra(resposta);
   }
 
-  // Ao iniciar o component já fornece a palavra escolhida da vez.
-  ngOnInit(): void {
-    this.nomeAleatorio_service = this.palavraCorreta.getPalavraCorreta();
-    this.letras_correto = [this.nomeAleatorio_service[0], this.nomeAleatorio_service[1], this.nomeAleatorio_service[2], 
-                    this.nomeAleatorio_service[3], this.nomeAleatorio_service[4], this.nomeAleatorio_service[5]];
-  }
 }
