@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { PalavrasService } from '../../services/palavras.service';
 import { NgStyle } from '@angular/common';
 import { AppComponent } from '../../app.component';
@@ -12,10 +12,10 @@ import { AppComponent } from '../../app.component';
 })
 export class LinhasComponent {
 
-  // Construtor. 
+  // Construtor. ==========================================================================================================================================
   constructor(private palavrasServices: PalavrasService, private palavraCorreta: AppComponent) { };
 
-  // Variaveis.
+  // Variaveis ============================================================================================================================================
   nomeAleatorio_service: string = "";
   letras_correto: string[] = [];
   desabilitarInputs: boolean = false;
@@ -31,21 +31,56 @@ export class LinhasComponent {
   // Background dos inputs para correção de letras.
   background_letra: string[] =  ["rgb(54, 54, 54)", "rgb(54, 54, 54)", "rgb(54, 54, 54)", "rgb(54, 54, 54)", "rgb(54, 54, 54)", "rgb(54, 54, 54)"];
 
-  // Função para corrigir as posições das letras.
-  corrigirLetra(resposta: string[]){
-    // For para verificar se a letra esta no lugar correto.
-    for (let i = 0; i < this.letras_correto.length; i++) {
-      if(resposta[i].toUpperCase() == this.letras_correto[i].toUpperCase()){
-        this.background_letra[i] = "green";
-      }else{
-        // For para verificar se a letra pelo menos existe na palavra.
-        for (let j = 0; j < this.letras_correto.length; j++) {
-          if (resposta[j].toUpperCase() == this.letras_correto[i].toUpperCase()) {
-            this.background_letra[j] = "yellow";
-          }else{
+  // Funções. =============================================================================================================================================
+
+  // Função para quando teclar 'Enter' irá fazer a correção da tentativa.
+  @HostListener('document:keydown.enter', ['$event'])
+  handleEnterPress(event: KeyboardEvent) {
+    this.mostraResposta();
+  }
+
+  // Função para correção da tentativa.
+  corrigirLetra(resposta: string[]) {
+    // Variável para verificar se foi preenchido todos as 6 letras.
+    let quantLetras = 0;
+  
+    // Verifica quantas letras foram preenchidas (não são strings vazias).
+    for (let index = 0; index < resposta.length; index++) {
+      if (resposta[index] !== '') {
+        quantLetras++;
+      }
+    }
+    
+    // Verifica se todos os 6 inputs estão preenchidos.
+    if (quantLetras === 6) {
+      // For para verificar se a letra está no lugar correto, caso correto, transforma em verde.
+      for (let i = 0; i < this.letras_correto.length; i++) {
+        if (resposta[i].toUpperCase() == this.letras_correto[i].toUpperCase()) {
+          this.background_letra[i] = "rgba(0, 255, 0, 0.808)";
+        } else {
+          // For para verificar se a letra pelo menos existe na palavra, caso a letra exista, mas lugar errado, transforma em amarelo.
+          for (let j = 0; j < this.letras_correto.length; j++) {
+            if (resposta[j].toUpperCase() == this.letras_correto[i].toUpperCase()) {
+              this.background_letra[j] = "rgba(255, 255, 0, 0.74)";
+            }
           }
         }
       }
+      this.desabilitarInputs = true;
+    } else {
+    }
+  }
+
+  moverProximoInput(atualInput: HTMLInputElement, proximoInput: HTMLInputElement) {
+    if (atualInput.value.length === 1) {
+      proximoInput.focus(); // Move o foco para o próximo input
+    }
+  }
+
+  moverAnteriorInput(event: KeyboardEvent, anteriorInput: HTMLInputElement | null, atualInput: HTMLInputElement) {
+    // Move o foco para o input anterior se "Backspace" for pressionado e o campo atual estiver vazio
+    if (event.key === 'Backspace' && atualInput.value.length === 0 && anteriorInput) {
+      anteriorInput.focus(); 
     }
   }
 
@@ -59,8 +94,6 @@ export class LinhasComponent {
     const letra6Value = this.letra6Input.nativeElement.value;
 
     const resposta: string[] = [letra1Value, letra2Value, letra3Value, letra4Value, letra5Value, letra6Value];
-    
-    this.desabilitarInputs = true;
 
     this.corrigirLetra(resposta);
   }

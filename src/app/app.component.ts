@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LinhasComponent } from './components/linhas/linhas.component';
+import { HeaderComponent } from './components/header/header.component';
 
 import { PalavrasService } from './services/palavras.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LinhasComponent],
+  imports: [RouterOutlet, LinhasComponent, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

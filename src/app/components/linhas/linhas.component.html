@@ -1,11 +1,66 @@
 <div class="linha">
-    
-    <input [ngStyle]="{ 'background-color': background_letra[0] }" type="text" name="letra1" id="letra1" #letra1Input autocomplete="off" maxlength="1" [disabled]="desabilitarInputs">
-    <input [ngStyle]="{ 'background-color': background_letra[1] }" type="text" name="letra2" id="letra2" #letra2Input autocomplete="off" maxlength="1" [disabled]="desabilitarInputs">
-    <input [ngStyle]="{ 'background-color': background_letra[2] }" type="text" name="letra3" id="letra3" #letra3Input autocomplete="off" maxlength="1" [disabled]="desabilitarInputs">
-    <input [ngStyle]="{ 'background-color': background_letra[3] }" type="text" name="letra4" id="letra4" #letra4Input autocomplete="off" maxlength="1" [disabled]="desabilitarInputs">
-    <input [ngStyle]="{ 'background-color': background_letra[4] }" type="text" name="letra5" id="letra5" #letra5Input autocomplete="off" maxlength="1" [disabled]="desabilitarInputs">
-    <input [ngStyle]="{ 'background-color': background_letra[5] }" type="text" name="letra6" id="letra6" #letra6Input autocomplete="off" maxlength="1" [disabled]="desabilitarInputs">
-
-    <input type="button" class="resposta" (click)="mostraResposta()" value="Ir">
-</div><br>
+    <input [ngStyle]="{ 'background-color': desabilitarInputs ? background_letra[0] : '' }"
+       type="text"
+       name="letra1"
+       id="letra1"
+       #letra1Input
+       autocomplete="off"
+       maxlength="1"
+       (input)="moverProximoInput(letra1Input, letra2Input)"
+       (keydown)="moverAnteriorInput($event, null, letra1Input)"
+       [disabled]="desabilitarInputs">
+       
+    <input [ngStyle]="{ 'background-color': background_letra[1] }"
+       type="text"
+       name="letra2"
+       id="letra2"
+       #letra2Input
+       autocomplete="off"
+       maxlength="1"
+       (input)="moverProximoInput(letra2Input, letra3Input)"
+       (keydown)="moverAnteriorInput($event, letra1Input, letra2Input)"
+       [disabled]="desabilitarInputs">
+       
+    <input [ngStyle]="{ 'background-color': background_letra[2] }"
+       type="text"
+       name="letra3"
+       id="letra3"
+       #letra3Input
+       autocomplete="off"
+       maxlength="1"
+       (input)="moverProximoInput(letra3Input, letra4Input)"
+       (keydown)="moverAnteriorInput($event, letra2Input, letra3Input)"
+       [disabled]="desabilitarInputs">
+       
+    <input [ngStyle]="{ 'background-color': background_letra[3] }"
+       type="text"
+       name="letra4"
+       id="letra4"
+       #letra4Input
+       autocomplete="off"
+       maxlength="1"
+       (input)="moverProximoInput(letra4Input, letra5Input)"
+       (keydown)="moverAnteriorInput($event, letra3Input, letra4Input)"
+       [disabled]="desabilitarInputs">
+       
+    <input [ngStyle]="{ 'background-color': background_letra[4] }"
+       type="text"
+       name="letra5"
+       id="letra5"
+       #letra5Input
+       autocomplete="off"
+       maxlength="1"
+       (input)="moverProximoInput(letra5Input, letra6Input)"
+       (keydown)="moverAnteriorInput($event, letra4Input, letra5Input)"
+       [disabled]="desabilitarInputs">
+       
+    <input [ngStyle]="{ 'background-color': background_letra[5] }"
+       type="text"
+       name="letra6"
+       id="letra6"
+       #letra6Input
+       autocomplete="off"
+       maxlength="1"
+       (keydown)="moverAnteriorInput($event, letra5Input, letra6Input)"
+       [disabled]="desabilitarInputs">
+</div>

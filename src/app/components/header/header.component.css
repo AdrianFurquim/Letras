@@ -1,0 +1,11 @@
+header{    
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(58, 58, 58);
+}
+
+div{
+    margin-left: 3em;
+    margin-right: 3em;
+}
