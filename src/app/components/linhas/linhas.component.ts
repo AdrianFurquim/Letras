@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { PalavrasService } from '../../services/palavras.service';
 import { NgStyle } from '@angular/common';
 import { AppComponent } from '../../app.component';
+import { TecladoTentativaService } from '../../services/tecladoTentativa/teclado-tentativa.service';
 
 @Component({
   selector: 'app-linhas',
@@ -13,7 +14,7 @@ import { AppComponent } from '../../app.component';
 export class LinhasComponent {
 
   // Construtor. ==========================================================================================================================================
-  constructor(private palavrasServices: PalavrasService, private palavraCorreta: AppComponent) { };
+  constructor(private tentativa: TecladoTentativaService, private palavraCorreta: AppComponent) { };
 
   // Variaveis ============================================================================================================================================
   nomeAleatorio_service: string = "";
@@ -55,7 +56,7 @@ export class LinhasComponent {
     for (let index = 0; index < resposta.length; index++) {
       if (resposta[index] !== '') {
         quantLetras++;
-      };
+      }
     };
     
     // Verifica se todos os 6 inputs estão preenchidos.
@@ -73,9 +74,17 @@ export class LinhasComponent {
           }
         }
       }
+      // Desabilita a modificação dos inputs com tentativas já concluídas.
       this.desabilitarInputs = true;
+      // Atualiza a tentativa para fazer a modificação na cor do teclado.
+      this.atualizarTentativa(resposta);
     } else {
     }
+  };
+
+  // Função para mandar a tentativa para fazer a modificação na cor do teclado.
+  atualizarTentativa(novaTentativa: string[]) {
+    this.tentativa.atualizarTentativa(novaTentativa);
   };
 
   // Função para ao inserir uma letra no input, passa para o próximo input.
@@ -84,7 +93,7 @@ export class LinhasComponent {
     if (atualInput.value.length === 1) {
       proximoInput.focus();
     }
-  }
+  };
 
   // Função para ao apagar uma letra no input, passa para o input anterior.
   moverAnteriorInput(event: KeyboardEvent, anteriorInput: HTMLInputElement | null, atualInput: HTMLInputElement) {
@@ -92,7 +101,7 @@ export class LinhasComponent {
     if (event.key === 'Backspace' && atualInput.value.length === 0 && anteriorInput) {
       anteriorInput.focus(); 
     }
-  }
+  };
 
   // Função para pegar os valores e corrigir posições.
   mostraResposta() {
@@ -102,6 +111,6 @@ export class LinhasComponent {
 
     // Rodando a função de corrigir a tentativa.
     this.corrigirLetra(resposta);
-  }
+  };
 
 }

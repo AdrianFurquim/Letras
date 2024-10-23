@@ -1,0 +1,17 @@
+div{
+    display: flex;
+    gap: 0.5em;
+    justify-content: center;
+    height: 4em;
+}
+
+p{
+    background-color: rgb(124, 124, 124);
+    text-align: center;
+    align-items: center;
+    padding: 5px;
+    width: 1em;
+    height: 1em;
+    font-size: 2em;
+    border-radius: 10px;
+}

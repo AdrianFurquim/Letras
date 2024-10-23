@@ -2,10 +2,9 @@ input{
     border: 5px solid rgb(124, 124, 124);
     border-radius: 30px;
     background-color: rgb(54, 54, 54);
-    /* background-color: rgba(0, 255, 0, 0.808); */
     font-size: 5em;
-    width: 1.2em;
-    height: 1.2em;
+    width: 1.1em;
+    height: 1.1em;
     color: white;
     text-align: center;
     outline: none;
@@ -16,8 +15,8 @@ input{
 
 input:active, input:focus {
     background-color: rgb(43, 43, 43) !important;
-    width: 1.3em;
-    height: 1.3em;
+    width: 1.2em;
+    height: 1.2em;
     border-bottom: 7px solid;
   }
 

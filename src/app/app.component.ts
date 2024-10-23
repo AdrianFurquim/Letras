@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LinhasComponent } from './components/linhas/linhas.component';
 import { HeaderComponent } from './components/header/header.component';
+import { TecladoComponent } from './components/teclado/teclado.component';
 
 import { PalavrasService } from './services/palavras.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LinhasComponent, HeaderComponent],
+  imports: [RouterOutlet, LinhasComponent, HeaderComponent, TecladoComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -29,9 +30,7 @@ export class AppComponent {
 
   // Get para a palavra correta.
   getPalavraCorreta(){
-    return this.nomeAleatorio
+    return this.nomeAleatorio;
   }
-
-
 
 }
