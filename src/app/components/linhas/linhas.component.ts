@@ -61,13 +61,19 @@ export class LinhasComponent {
     
     // Verifica se todos os 6 inputs estão preenchidos.
     if (quantLetras === 6) {
+
       // For para verificar se a letra está no lugar correto, caso correto, transforma em verde.
       for (let i = 0; i < this.letras_correto.length; i++) {
+
+        // Verifica se a letra da tentativa esta alinhada com a correta.
         if (resposta[i].toUpperCase() == this.letras_correto[i].toUpperCase()) {
           this.background_letra[i] = "rgba(0, 255, 0, 0.808)";
         } else {
+
           // For para verificar se a letra pelo menos existe na palavra, caso a letra exista, mas lugar errado, transforma em amarelo.
           for (let j = 0; j < this.letras_correto.length; j++) {
+
+            // Verifica se a letra da tentativa esta ao menos na palavra correta.
             if (resposta[j].toUpperCase() == this.letras_correto[i].toUpperCase()) {
               this.background_letra[j] = "rgba(255, 255, 0, 0.74)";
             }
