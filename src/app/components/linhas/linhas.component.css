@@ -3,8 +3,8 @@ input{
     border-radius: 30px;
     background-color: rgb(54, 54, 54);
     font-size: 5em;
-    width: 1.1em;
-    height: 1.1em;
+    width: 1em;
+    height: 1em;
     color: white;
     text-align: center;
     outline: none;
@@ -15,8 +15,8 @@ input{
 
 input:active, input:focus {
     background-color: rgb(43, 43, 43) !important;
-    width: 1.2em;
-    height: 1.2em;
+    width: 1.1em;
+    height: 1.1em;
     border-bottom: 7px solid;
   }
 
@@ -24,6 +24,7 @@ input:active, input:focus {
     display: flex;
     justify-content: center;
     gap: 0.3em;
+    margin-top: 0.5em;
 }
 
 .resposta{

@@ -24,7 +24,7 @@ export class PalavrasService {
     "maroto", "sereno", "esboco", "licito", "lavrar", "anciao", "colher", "engodo", "trazer", "apenas", "emocao", "estado", "colera", "iniquo", "genero", "sovina", 
     "florao", "tirano", "conter", "agucar", "deixar", "encher", "inibir", "seccao", "praxis", "senhor", "dotado", "sudito", "ajudar", "topico", "pleito", "genese", 
     "clamar", "proeza", "amanha", "fogosa", "martir", "devido", "teoria", "frisar", "sentir", "prisma", "alarde", "esnobe", "diccao", "feicao", "triste", "jamais", 
-    "em vao", "emitir", "piegas", "acordo", "exalar", "forjar", "frugal", "vermos", "lexico", "dilema", "falico", "satira", "tornar", "talvez", "sabido", "quanto", 
+    "surtar", "emitir", "piegas", "acordo", "exalar", "forjar", "frugal", "vermos", "lexico", "dilema", "falico", "satira", "tornar", "talvez", "sabido", "quanto", 
     "infimo", "inepto", "exiguo", "suprir", "cismar", "aduzir", "missao", "provem", "idilio", "semear", "pseudo", "divino", "almeja", "seguir", "abismo", "deriva", 
     "coacao", "triade", "polido", "funcao", "evocar", "subito", "social", "condiz", "galgar", "querer", "patria", "aporte", "depois", "bencao", "omitir", "modelo", 
     "patife", "demais", "cacula", "lastro", "bonito", "servil", "tipico", "sermos", "apesar", "aurora", "elidir", "pueril", "chapeu", "escuso", "obtuso", "comigo", 

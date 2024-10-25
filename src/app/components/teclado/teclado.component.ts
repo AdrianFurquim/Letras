@@ -18,7 +18,7 @@ export class TecladoComponent {
   // Variáveis. ==========================================================================================================================================
   letrasJaUsadas: string[] = [];
   tentativa_service: string[] = [];
-  tecla = document.getElementsByClassName('tecla');
+  teclas: string[] = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M"];
   nomeAleatorio_service: string = "";
   letras_correto: string[] = [];
   background_tecla: string[] =  [];
@@ -33,43 +33,47 @@ export class TecladoComponent {
     }
   };
 
-  // Testes para mapear teclado.
-  teclaPressionada: string = '';
-  @HostListener('document:keydown', ['$event'])
-  handleKeyPress(event: KeyboardEvent) {
-    this.teclaPressionada = event.key; // Captura a tecla pressionada
-    console.log('Tecla pressionada:', this.tecla[25].innerHTML);
-  };
-
   // Função para ao clicar enter, recuperar a tentativa do service, e assim modificar a cor das teclas.
   @HostListener('document:keydown.enter', ['$event'])
   handleEnterPress(event: KeyboardEvent) {
     // Recuperando a tentativa armazenada no service.
     this.tentativa_service = this.tentativa.getTentativa();
     // console.log("Tentativa de resposta: " , this.tentativa_service[0] );
-
+    
     // For para rodar o array das teclas.
-    for (let i = 0; i < this.tecla.length; i++) {
-
+    for (let i = 0; i < this.teclas.length; i++) {
+      
       // For para rodar o array das letras compostas pela tentativa.
       for (let j = 0; j < this.tentativa_service.length; j++) {
-
+        
         // If a tecla for igual a tentativa.
-        if (this.tecla[i].innerHTML == this.tentativa_service[j].toUpperCase()) {
+        if (this.teclas[i] == this.tentativa_service[j].toUpperCase()) {
 
+          // Garante que independentemente a letra será retirada caso não passe nos próximos IFs.
+          this.background_tecla[i] = "black";
           
-          // Mudando a cor para amarelo, pois já é garantido que a letra esta dentre as opções.
-          this.background_tecla[i] = "rgba(255, 255, 0, 0.74)";
-
           // For para rodar o array das letras corretas da resposta.
           for (let k = 0; k < this.letras_correto.length; k++) {
             
             // If para se a tentativa do usuário bate com a letra correta.
-            if(this.tentativa_service[k].toUpperCase() == this.letras_correto[k].toUpperCase()){
+            if (this.tentativa_service[j].toUpperCase() === this.letras_correto[j].toUpperCase()) {
 
-              // If para verificar se a letra que deve ser mudada está correta com a tentativa.
-              if (this.tecla[i].innerHTML == this.tentativa_service[k].toUpperCase()) {
-                this.background_tecla[i] = "green"
+              // Muda a cor e acaba o loop da letra.
+              this.background_tecla[i] = "green";
+              break;
+
+            }else{
+              // IFs para verificação de se a letra existe mas está na possição errada.
+              if (this.tentativa_service[k].toUpperCase() === this.letras_correto[k].toUpperCase() && j != k ) {
+              }else{
+                if (this.tentativa_service[k].toUpperCase() !== this.letras_correto[k].toUpperCase() && j != k ) {
+                  if (this.tentativa_service[j].toUpperCase() === this.letras_correto[k].toUpperCase() && j != k ) {
+
+                    // Muda a cor e acaba o loop da letra.
+                    this.background_tecla[i] = "rgba(255, 255, 0, 0.74)";
+                    break;
+                  }
+                }
               }
             }
           }
