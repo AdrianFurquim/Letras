@@ -2,11 +2,12 @@
 
 <div>
   <app-header></app-header>
+  <router-outlet></router-outlet>
   <!-- <h2> {{ nomeAleatorio }}</h2> -->
 
 </div>
 
-<div>
+<div *ngIf="!isSobrePage">
   <app-linhas></app-linhas>
   <app-linhas></app-linhas>
   <app-linhas></app-linhas>
@@ -16,4 +17,4 @@
   <app-linhas></app-linhas>
 </div>
 
-<app-teclado></app-teclado>
+<app-teclado *ngIf="!isSobrePage"></app-teclado>

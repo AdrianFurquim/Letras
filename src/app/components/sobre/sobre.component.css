@@ -1,0 +1,44 @@
+div{
+    text-align: center;
+    justify-content: center;
+    background-color: rgb(58, 58, 58);    
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 1.4em;
+}
+
+.logo{
+    width: 65%;
+}
+
+.text{
+    width: 65%;
+}
+
+.btn{
+    width: 30%;
+}
+
+p{
+    text-align: left;
+    font-size: 1.4em;
+}
+
+h1 span{
+    font-size: 3em;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    background-color: rgba(0, 216, 0, 0.808);
+    padding: 10px;
+    font-size: 1.4em;
+    transition: 0.5s;
+}
+
+a:hover{
+    background-color: rgba(2, 187, 2, 0.767);
+    font-size: 1.6em;
+}
