@@ -1,5 +1,10 @@
 # Letras
 
+<div align="center">
+  <img width="750" src="https://github.com/user-attachments/assets/caedd23c-f2b0-441c-ade9-86c8a398ef40" alt="Tela do jogo termo sendo concluído no navegador"/>
+</div>
+
+
 <h4 align="center">🚧 Projeto em Andamento 🚧</h4>
 
 ## Ideia
