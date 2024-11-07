@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { Component, ViewChild, ElementRef, HostListener, Input } from '@angular/core';
 import { PalavrasService } from '../../services/palavras.service';
 import { NgStyle } from '@angular/common';
 import { AppComponent } from '../../app.component';
@@ -14,12 +14,18 @@ import { TecladoTentativaService } from '../../services/tecladoTentativa/teclado
 export class LinhasComponent {
 
   // Construtor. ==========================================================================================================================================
-  constructor(private tentativa: TecladoTentativaService, private palavraCorreta: AppComponent) { };
+  constructor(private tentativa: TecladoTentativaService, private palavraCorreta: AppComponent, private palavraService: PalavrasService) { };
 
   // Variaveis ============================================================================================================================================
   nomeAleatorio_service: string = "";
   letras_correto: string[] = [];
-  desabilitarInputs: boolean = false;
+  linhaCorrecaoTentativa: boolean = false;
+  
+  // Chegando cada ID em uma parte.
+  @Input() id!: number;
+  @Input() Ltentativa!: boolean;
+
+  desabilitarInputs: boolean = this.Ltentativa;
 
   // Pegando os valores dos inputs.
   @ViewChild('letra1Input', { static: false }) letra1Input!: ElementRef;
@@ -51,41 +57,51 @@ export class LinhasComponent {
   corrigirLetra(resposta: string[]) {
     // Variável para verificar se foi preenchido todos as 6 letras.
     let quantLetras = 0;
+
+    // Juntando a resposta em uma palavra completa.
+    let respostaCompleta = resposta.join('');
+    // Verificando se a palavra digitada ao menos existe no array de dados.
+    if (this.palavraService.getPalavra(respostaCompleta) == true) {
+
+      // Caso exista - Verifica quantas letras foram preenchidas (não são strings vazias).
+      for (let index = 0; index < resposta.length; index++) {
+        if (resposta[index] !== '') {
+          quantLetras++;
+        }
+      };
+      
+      // Verifica se todos os 6 inputs estão preenchidos.
+      if (quantLetras === 6) {
   
-    // Verifica quantas letras foram preenchidas (não são strings vazias).
-    for (let index = 0; index < resposta.length; index++) {
-      if (resposta[index] !== '') {
-        quantLetras++;
-      }
-    };
-    
-    // Verifica se todos os 6 inputs estão preenchidos.
-    if (quantLetras === 6) {
-
-      // For para verificar se a letra está no lugar correto, caso correto, transforma em verde.
-      for (let i = 0; i < this.letras_correto.length; i++) {
-
-        // Verifica se a letra da tentativa esta alinhada com a correta.
-        if (resposta[i].toUpperCase() == this.letras_correto[i].toUpperCase()) {
-          this.background_letra[i] = "rgba(0, 255, 0, 0.808)";
-        } else {
-
-          // For para verificar se a letra pelo menos existe na palavra, caso a letra exista, mas lugar errado, transforma em amarelo.
-          for (let j = 0; j < this.letras_correto.length; j++) {
-
-            // Verifica se a letra da tentativa esta ao menos na palavra correta.
-            if (resposta[j].toUpperCase() == this.letras_correto[i].toUpperCase()) {
-              this.background_letra[j] = "rgba(255, 255, 0, 0.74)";
+        // For para verificar se a letra está no lugar correto, caso correto, transforma em verde.
+        for (let i = 0; i < this.letras_correto.length; i++) {
+  
+          // Verifica se a letra da tentativa esta alinhada com a correta.
+          if (resposta[i].toUpperCase() == this.letras_correto[i].toUpperCase()) {
+            this.background_letra[i] = "rgba(0, 255, 0, 0.808)";
+          } else {
+  
+            // For para verificar se a letra pelo menos existe na palavra, caso a letra exista, mas lugar errado, transforma em amarelo.
+            for (let j = 0; j < this.letras_correto.length; j++) {
+  
+              // Verifica se a letra da tentativa esta ao menos na palavra correta.
+              if (resposta[j].toUpperCase() == this.letras_correto[i].toUpperCase()) {
+                this.background_letra[j] = "rgba(255, 255, 0, 0.74)";
+              }
             }
           }
         }
+        // Desabilita a modificação dos inputs com tentativas já concluídas.
+        this.Ltentativa = true;
+        // Atualiza a tentativa para fazer a modificação na cor do teclado.
+        this.atualizarTentativa(resposta);
+      } else {
       }
-      // Desabilita a modificação dos inputs com tentativas já concluídas.
-      this.desabilitarInputs = true;
-      // Atualiza a tentativa para fazer a modificação na cor do teclado.
-      this.atualizarTentativa(resposta);
-    } else {
+    }else{
+      // Caso não exista notifica no console por agora.
+      console.log("Esta palavra não foi reconhecida");
     }
+  
   };
 
   // Função para mandar a tentativa para fazer a modificação na cor do teclado.

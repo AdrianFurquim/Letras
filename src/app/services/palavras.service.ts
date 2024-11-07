@@ -60,4 +60,9 @@ export class PalavrasService {
     return letras;
   }
 
+  // Função para retornar se a palavra existe no array.
+  getPalavra(palavra: string) {
+    return this.palavras.find(p => p === palavra) !== undefined;
+  }
+  
 }

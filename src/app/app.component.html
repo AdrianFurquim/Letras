@@ -8,13 +8,14 @@
 </div>
 
 <div *ngIf="!isSobrePage">
-  <app-linhas></app-linhas>
-  <app-linhas></app-linhas>
-  <app-linhas></app-linhas>
-  <app-linhas></app-linhas>
-  <app-linhas></app-linhas>
-  <app-linhas></app-linhas>
-  <app-linhas></app-linhas>
+  <!-- Cada linha precisa ser bloqueada e desbloqueada conforme a tentativa. -->
+  <app-linhas [id]="1" [Ltentativa]="linhaTentativa[0]"></app-linhas>
+  <app-linhas [id]="2" [Ltentativa]="linhaTentativa[1]"></app-linhas>
+  <app-linhas [id]="3" [Ltentativa]="linhaTentativa[2]"></app-linhas>
+  <app-linhas [id]="4" [Ltentativa]="linhaTentativa[3]"></app-linhas>
+  <app-linhas [id]="5" [Ltentativa]="linhaTentativa[4]"></app-linhas>
+  <app-linhas [id]="6" [Ltentativa]="linhaTentativa[5]"></app-linhas>
+  <app-linhas [id]="7" [Ltentativa]="linhaTentativa[6]"></app-linhas>
 </div>
 
 <app-teclado *ngIf="!isSobrePage"></app-teclado>

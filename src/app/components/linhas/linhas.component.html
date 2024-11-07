@@ -1,5 +1,5 @@
 <div class="linha">
-    <input [ngStyle]="{ 'background-color': desabilitarInputs ? background_letra[0] : '' }"
+   <input [ngStyle]="{ 'background-color': Ltentativa ? background_letra[0] : '' }"
        type="text"
        name="letra1"
        id="letra1"
@@ -8,9 +8,9 @@
        maxlength="1"
        (input)="moverProximoInput(letra1Input, letra2Input)"
        (keydown)="moverAnteriorInput($event, null, letra1Input)"
-       [disabled]="desabilitarInputs">
-       
-    <input [ngStyle]="{ 'background-color': background_letra[1] }"
+       [disabled]="Ltentativa">
+
+   <input [ngStyle]="{ 'background-color': background_letra[1] }"
        type="text"
        name="letra2"
        id="letra2"
@@ -19,9 +19,9 @@
        maxlength="1"
        (input)="moverProximoInput(letra2Input, letra3Input)"
        (keydown)="moverAnteriorInput($event, letra1Input, letra2Input)"
-       [disabled]="desabilitarInputs">
+       [disabled]="Ltentativa">
        
-    <input [ngStyle]="{ 'background-color': background_letra[2] }"
+   <input [ngStyle]="{ 'background-color': background_letra[2] }"
        type="text"
        name="letra3"
        id="letra3"
@@ -30,9 +30,9 @@
        maxlength="1"
        (input)="moverProximoInput(letra3Input, letra4Input)"
        (keydown)="moverAnteriorInput($event, letra2Input, letra3Input)"
-       [disabled]="desabilitarInputs">
+       [disabled]="Ltentativa">
        
-    <input [ngStyle]="{ 'background-color': background_letra[3] }"
+   <input [ngStyle]="{ 'background-color': background_letra[3] }"
        type="text"
        name="letra4"
        id="letra4"
@@ -41,9 +41,9 @@
        maxlength="1"
        (input)="moverProximoInput(letra4Input, letra5Input)"
        (keydown)="moverAnteriorInput($event, letra3Input, letra4Input)"
-       [disabled]="desabilitarInputs">
+       [disabled]="Ltentativa">
        
-    <input [ngStyle]="{ 'background-color': background_letra[4] }"
+   <input [ngStyle]="{ 'background-color': background_letra[4] }"
        type="text"
        name="letra5"
        id="letra5"
@@ -52,9 +52,9 @@
        maxlength="1"
        (input)="moverProximoInput(letra5Input, letra6Input)"
        (keydown)="moverAnteriorInput($event, letra4Input, letra5Input)"
-       [disabled]="desabilitarInputs">
+       [disabled]="Ltentativa">
        
-    <input [ngStyle]="{ 'background-color': background_letra[5] }"
+   <input [ngStyle]="{ 'background-color': background_letra[5] }"
        type="text"
        name="letra6"
        id="letra6"
@@ -62,5 +62,6 @@
        autocomplete="off"
        maxlength="1"
        (keydown)="moverAnteriorInput($event, letra5Input, letra6Input)"
-       [disabled]="desabilitarInputs">
+       [disabled]="Ltentativa">
+
 </div>
