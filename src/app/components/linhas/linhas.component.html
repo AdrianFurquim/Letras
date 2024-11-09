@@ -7,7 +7,7 @@
        autocomplete="off"
        maxlength="1"
        (input)="moverProximoInput(letra1Input, letra2Input)"
-       (keydown)="moverAnteriorInput($event, null, letra1Input)"
+       (keydown)="moverAnteriorInput($event, null, letra1Input, letra2Input)"
        [disabled]="Ltentativa">
 
    <input [ngStyle]="{ 'background-color': background_letra[1] }"
@@ -18,7 +18,7 @@
        autocomplete="off"
        maxlength="1"
        (input)="moverProximoInput(letra2Input, letra3Input)"
-       (keydown)="moverAnteriorInput($event, letra1Input, letra2Input)"
+       (keydown)="moverAnteriorInput($event, letra1Input, letra2Input, letra3Input)"
        [disabled]="Ltentativa">
        
    <input [ngStyle]="{ 'background-color': background_letra[2] }"
@@ -29,7 +29,7 @@
        autocomplete="off"
        maxlength="1"
        (input)="moverProximoInput(letra3Input, letra4Input)"
-       (keydown)="moverAnteriorInput($event, letra2Input, letra3Input)"
+       (keydown)="moverAnteriorInput($event, letra2Input, letra3Input, letra4Input)"
        [disabled]="Ltentativa">
        
    <input [ngStyle]="{ 'background-color': background_letra[3] }"
@@ -40,7 +40,7 @@
        autocomplete="off"
        maxlength="1"
        (input)="moverProximoInput(letra4Input, letra5Input)"
-       (keydown)="moverAnteriorInput($event, letra3Input, letra4Input)"
+       (keydown)="moverAnteriorInput($event, letra3Input, letra4Input, letra5Input)"
        [disabled]="Ltentativa">
        
    <input [ngStyle]="{ 'background-color': background_letra[4] }"
@@ -51,7 +51,7 @@
        autocomplete="off"
        maxlength="1"
        (input)="moverProximoInput(letra5Input, letra6Input)"
-       (keydown)="moverAnteriorInput($event, letra4Input, letra5Input)"
+       (keydown)="moverAnteriorInput($event, letra4Input, letra5Input, letra6Input)"
        [disabled]="Ltentativa">
        
    <input [ngStyle]="{ 'background-color': background_letra[5] }"
@@ -61,7 +61,7 @@
        #letra6Input
        autocomplete="off"
        maxlength="1"
-       (keydown)="moverAnteriorInput($event, letra5Input, letra6Input)"
+       (keydown)="moverAnteriorInput($event, letra5Input, letra6Input, null)"
        [disabled]="Ltentativa">
 
 </div>

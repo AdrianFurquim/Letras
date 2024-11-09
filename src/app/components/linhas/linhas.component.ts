@@ -117,11 +117,23 @@ export class LinhasComponent {
     }
   };
 
-  // Função para ao apagar uma letra no input, passa para o input anterior.
-  moverAnteriorInput(event: KeyboardEvent, anteriorInput: HTMLInputElement | null, atualInput: HTMLInputElement) {
+  // Função para ao apagar uma letra no input, passar ou voltar para o input anterior.
+  moverAnteriorInput(event: KeyboardEvent, anteriorInput: HTMLInputElement | null, atualInput: HTMLInputElement, proximoInput: HTMLInputElement | null) {
     // Move o foco para o input anterior se "Backspace" for pressionado e o campo atual estiver vazio.
     if (event.key === 'Backspace' && atualInput.value.length === 0 && anteriorInput) {
+      anteriorInput.focus();
+    } 
+    // Caso anterior seja negativo, verfica se "Backspace" foi pressionado, se o campo atual estiver preenchido, apaga o valor atual.
+    else if( event.key === 'Backspace' && atualInput.value.length === 1){
+      atualInput.value = '';
+    }
+    // Move o Foco para o input anterior se "ArrowLeft" for pressionado.
+    else if (event.key === 'ArrowLeft' && anteriorInput) {
       anteriorInput.focus(); 
+    }
+    // Move o Foco para o próximo input se "ArrowRight" for pressionado.
+    else if (event.key === 'ArrowRight' && proximoInput ){
+      proximoInput.focus();
     }
   };
 

@@ -39,7 +39,7 @@ export class PalavrasService {
     "acatar", "destra", "oracao", "quiser", "fastio", "umbral", "arguto", "safada", "frouxo", "bebado", "abonar", "contra", "metido", "colhao", "urbano", "fulcro", 
     "nitido", "inocua", "colega", "fadado", "oposto", "abaixo", "amante", "evitar", "charco", "gaiato", "diacho", "descer", "possam", "munido", "animal", "afetar", 
     "babaca", "dormir", "covado", "lisura", "jardim", "despir", "caucao", "doenca", "trevas", "jocoso", "regido", "entao", "enviar", "conciso", "ativar", "alcada", 
-    "vulgar", "varios", "musica"
+    "vulgar", "varios", "musica", "letras"
   ];
   
   // Variáveis.
