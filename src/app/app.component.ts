@@ -30,8 +30,9 @@ export class AppComponent {
   isSobrePage = false;
   linhaTentativa: boolean[] = [false, true, true, true, true, true, true];
   numeroLinha: number[] = [1, 2, 3, 4, 5, 6, 7];
-  
-
+  completo: boolean[] = [false, false, false, false, false, false, false];
+  qntCompleto: number = 0;
+  isResposta: boolean = false;
 
   // Ao iniciar a página, já obtemos tanto uma palavra, quanto se estamos em Sobre ou no Novo Jogo.
   ngOnInit(): void {
@@ -51,6 +52,7 @@ export class AppComponent {
   @HostListener('document:keydown.enter', ['$event'])
   handleEnterPress(event: KeyboardEvent) {    
     this.correcaoLinha();
+
   }
   
   correcaoLinha() {
@@ -62,9 +64,36 @@ export class AppComponent {
         break;
       }
     }
-    
+
     // Cria uma nova referência para forçar a detecção de mudança
     this.linhaTentativa = [...this.linhaTentativa];
+
+  }
+  
+  // Função para autalizar as linhas que já foram feita as tentativas.
+  atualizarCompleto(index: number, novoValor: boolean) {
+    // Variáveis.
+    this.completo[index] = novoValor;
+    this.qntCompleto = 0;
+
+    // For para verificar todo o array de completo.
+    for (let index = 0; index < this.completo.length; index++) {
+      // Caso o completo[index] seja verdadeiro, soma em qntCompleto.
+      if (this.completo[index] == true){
+        this.qntCompleto++;
+      }else{
+      }
+    }
+
+    // Verifica se todos as sete linhas foram feitas tentativas.
+    if(this.qntCompleto == 7){
+      // Se sim, mostra a resposta correta.
+      this.isResposta = true;
+    }else{
+      // Caso contrário, zera qntCompleto para próxima verificação.
+      this.qntCompleto = 0
+    }
+    
   }
 
   // Get para a palavra correta.

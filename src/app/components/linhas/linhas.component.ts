@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, HostListener, Input } from '@angular/core';
+import { Component, ViewChild, ElementRef, HostListener, Input, Output, EventEmitter } from '@angular/core';
 import { PalavrasService } from '../../services/palavras.service';
 import { NgStyle } from '@angular/common';
 import { AppComponent } from '../../app.component';
@@ -24,8 +24,13 @@ export class LinhasComponent {
   // Chegando cada ID em uma parte.
   @Input() id!: number;
   @Input() Ltentativa!: boolean;
+  @Input() completo!: boolean;
 
   desabilitarInputs: boolean = this.Ltentativa;
+
+  // Output para fazer modificação no componente pai.
+  @Output() completoChange = new EventEmitter<boolean>();
+
 
   // Pegando os valores dos inputs.
   @ViewChild('letra1Input', { static: false }) letra1Input!: ElementRef;
@@ -107,6 +112,10 @@ export class LinhasComponent {
   // Função para mandar a tentativa para fazer a modificação na cor do teclado.
   atualizarTentativa(novaTentativa: string[]) {
     this.tentativa.atualizarTentativa(novaTentativa);
+    this.completo = true;
+
+    // Emite o evento para o pai quando completo muda para true
+    this.completoChange.emit(this.completo);
   };
 
   // Função para ao inserir uma letra no input, passa para o próximo input.

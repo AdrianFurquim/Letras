@@ -3,19 +3,21 @@
 <div>
   <app-header></app-header>
   <router-outlet></router-outlet>
-  <!-- <h2> {{ nomeAleatorio }}</h2> -->
-
 </div>
+
+<h1 *ngIf="isResposta">
+  <p>A resposta era: {{ nomeAleatorio.toUpperCase() }} </p>
+</h1>
 
 <div *ngIf="!isSobrePage">
   <!-- Cada linha precisa ser bloqueada e desbloqueada conforme a tentativa. -->
-  <app-linhas [id]="1" [Ltentativa]="linhaTentativa[0]"></app-linhas>
-  <app-linhas [id]="2" [Ltentativa]="linhaTentativa[1]"></app-linhas>
-  <app-linhas [id]="3" [Ltentativa]="linhaTentativa[2]"></app-linhas>
-  <app-linhas [id]="4" [Ltentativa]="linhaTentativa[3]"></app-linhas>
-  <app-linhas [id]="5" [Ltentativa]="linhaTentativa[4]"></app-linhas>
-  <app-linhas [id]="6" [Ltentativa]="linhaTentativa[5]"></app-linhas>
-  <app-linhas [id]="7" [Ltentativa]="linhaTentativa[6]"></app-linhas>
+  <app-linhas [id]="1" [Ltentativa]="linhaTentativa[0]" [completo]="completo[0]" (completoChange)="atualizarCompleto(0, $event)"></app-linhas>
+  <app-linhas [id]="2" [Ltentativa]="linhaTentativa[1]" [completo]="completo[1]" (completoChange)="atualizarCompleto(1, $event)"></app-linhas>
+  <app-linhas [id]="3" [Ltentativa]="linhaTentativa[2]" [completo]="completo[2]" (completoChange)="atualizarCompleto(2, $event)"></app-linhas>
+  <app-linhas [id]="4" [Ltentativa]="linhaTentativa[3]" [completo]="completo[3]" (completoChange)="atualizarCompleto(3, $event)"></app-linhas>
+  <app-linhas [id]="5" [Ltentativa]="linhaTentativa[4]" [completo]="completo[4]" (completoChange)="atualizarCompleto(4, $event)"></app-linhas>
+  <app-linhas [id]="6" [Ltentativa]="linhaTentativa[5]" [completo]="completo[5]" (completoChange)="atualizarCompleto(5, $event)"></app-linhas>
+  <app-linhas [id]="7" [Ltentativa]="linhaTentativa[6]" [completo]="completo[6]" (completoChange)="atualizarCompleto(6, $event)"></app-linhas>
 </div>
 
 <app-teclado *ngIf="!isSobrePage"></app-teclado>
