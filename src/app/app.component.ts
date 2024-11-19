@@ -24,14 +24,21 @@ export class AppComponent {
   // Construtor.
   constructor(private palavrasServices: PalavrasService, private router: Router, private route: ActivatedRoute, private tentativa: TecladoTentativaService) { }
   
-  // Inicalizando variaveis de respostas e as letras não concatenadas dela.
+  // Inicalizando variaveis.
+
+  // Nome Proveniente do Services.
   nomeAleatorio: string = "";
+  // Letras do Nome Proveniente do Services.
   letras: string[] = [];
+  // Localização da pagina do usuário.
   isSobrePage = false;
+  // Define se a liberação da tentariva linha por linha.
   linhaTentativa: boolean[] = [false, true, true, true, true, true, true];
-  numeroLinha: number[] = [1, 2, 3, 4, 5, 6, 7];
-  completo: boolean[] = [false, false, false, false, false, false, false];
+  // Define se a linha já esta completa ou não.
+  linhaCompleta: boolean[] = [false, false, false, false, false, false, false];
+  // Ajuda a definir se todas as 7 linhas já foram preenchidas.
   qntCompleto: number = 0;
+  // Ajuda a mostrar a resposta ao completar todas as tentativas.
   isResposta: boolean = false;
 
   // Ao iniciar a página, já obtemos tanto uma palavra, quanto se estamos em Sobre ou no Novo Jogo.
@@ -51,37 +58,35 @@ export class AppComponent {
   // Ao clicar no enter, executa a mudança de linha.
   @HostListener('document:keydown.enter', ['$event'])
   handleEnterPress(event: KeyboardEvent) {    
-    this.correcaoLinha();
 
   }
   
-  correcaoLinha() {
-    // Verifica a primeira linha e bloqueia/desbloqueia a próxima.
-    for (let i = 0; i < this.linhaTentativa.length; i++) {
-      if (this.linhaTentativa[i] === true) {
-        this.linhaTentativa[i] = false;
-        this.linhaTentativa[i + 1] = true;
-        break;
+  // Realiza a liberação das linhas para tentativas.
+  liberaLinha() {
+    // For para verificar todo o array de completo.
+    for (let index = 0; index < this.linhaCompleta.length; index++) {
+      // Verificando se a linha foi completa.
+      if (this.linhaCompleta[index] == true){
+        // Verificando se a próxima tentativa ainda não foi utilizada.
+        if (this.linhaTentativa[index + 1] = true) {
+          // Libera a próxima linha de tentativa.
+          this.linhaTentativa[index + 1] = false
+        }
       }
     }
-
-    // Cria uma nova referência para forçar a detecção de mudança
-    this.linhaTentativa = [...this.linhaTentativa];
-
   }
   
   // Função para autalizar as linhas que já foram feita as tentativas.
   atualizarCompleto(index: number, novoValor: boolean) {
     // Variáveis.
-    this.completo[index] = novoValor;
+    this.linhaCompleta[index] = novoValor;
     this.qntCompleto = 0;
 
     // For para verificar todo o array de completo.
-    for (let index = 0; index < this.completo.length; index++) {
+    for (let index = 0; index < this.linhaCompleta.length; index++) {
       // Caso o completo[index] seja verdadeiro, soma em qntCompleto.
-      if (this.completo[index] == true){
+      if (this.linhaCompleta[index] == true){
         this.qntCompleto++;
-      }else{
       }
     }
 
@@ -93,17 +98,13 @@ export class AppComponent {
       // Caso contrário, zera qntCompleto para próxima verificação.
       this.qntCompleto = 0
     }
-    
+
+    this.liberaLinha();
   }
 
   // Get para a palavra correta.
   getPalavraCorreta(){
     return this.nomeAleatorio;
-  }
-
-  // Get para a linha.
-  getLinhaTentativa(index: number){
-    return this.linhaTentativa[this.numeroLinha[index]];
   }
 
 }
