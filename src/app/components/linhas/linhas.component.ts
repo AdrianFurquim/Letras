@@ -16,21 +16,25 @@ export class LinhasComponent {
   // Construtor. ==========================================================================================================================================
   constructor(private tentativa: TecladoTentativaService, private palavraCorreta: AppComponent, private palavraService: PalavrasService) { };
 
-  // Variaveis ============================================================================================================================================
+  // Variaveis ===========================================================================================================================================
+
+  // Resposta correta do service.
   nomeAleatorio_service: string = "";
+  // Letras da resposta correta do service.
   letras_correto: string[] = [];
-  linhaCorrecaoTentativa: boolean = false;
   
-  // Chegando cada ID em uma parte.
+  // Linhas tem que ter um ID.
   @Input() id!: number;
+  // Linhas tem que ter um numero da tentativa.
   @Input() Ltentativa!: boolean;
+  // Linhas tem que verificar se a linha foi completa.
   @Input() completo!: boolean;
 
+  // Opção para conseguir desabilitar a sequência de inputs.
   desabilitarInputs: boolean = this.Ltentativa;
 
   // Output para fazer modificação no componente pai.
   @Output() completoChange = new EventEmitter<boolean>();
-
 
   // Pegando os valores dos inputs.
   @ViewChild('letra1Input', { static: false }) letra1Input!: ElementRef;

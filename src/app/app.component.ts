@@ -21,10 +21,10 @@ import { TecladoTentativaService } from './services/tecladoTentativa/teclado-ten
 })
 export class AppComponent {
 
-  // Construtor.
+  // Construtor ===================================================================================================================================================
   constructor(private palavrasServices: PalavrasService, private router: Router, private route: ActivatedRoute, private tentativa: TecladoTentativaService) { }
   
-  // Inicalizando variaveis.
+  // Inicalizando variaveis =======================================================================================================================================
 
   // Nome Proveniente do Services.
   nomeAleatorio: string = "";
@@ -40,6 +40,8 @@ export class AppComponent {
   qntCompleto: number = 0;
   // Ajuda a mostrar a resposta ao completar todas as tentativas.
   isResposta: boolean = false;
+
+  // Funções =======================================================================================================================================================
 
   // Ao iniciar a página, já obtemos tanto uma palavra, quanto se estamos em Sobre ou no Novo Jogo.
   ngOnInit(): void {
@@ -70,7 +72,7 @@ export class AppComponent {
         // Verificando se a próxima tentativa ainda não foi utilizada.
         if (this.linhaTentativa[index + 1] = true) {
           // Libera a próxima linha de tentativa.
-          this.linhaTentativa[index + 1] = false
+          this.linhaTentativa[index + 1] = false;
         }
       }
     }
@@ -99,6 +101,7 @@ export class AppComponent {
       this.qntCompleto = 0
     }
 
+    // Função para liberar a próxima linha de tentativa caso não seja a ultima.
     this.liberaLinha();
   }
 

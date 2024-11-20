@@ -16,13 +16,16 @@ export class TecladoComponent {
   constructor(private tentativa: TecladoTentativaService, private palavraCorreta: AppComponent) {};
   
   // Variáveis. ==========================================================================================================================================
-  letrasJaUsadas: string[] = [];
+  // Array da tentativa que veio proviniente do service.
   tentativa_service: string[] = [];
+  // Letras do teclado.
   teclas: string[] = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M"];
+  // Palavra da resposta correta.
   nomeAleatorio_service: string = "";
+  // Letas da palavra correto.
   letras_correto: string[] = [];
+  // Opção para mudar o backround das teclas.
   background_tecla: string[] =  [];
-
 
   ngOnInit(): void {
     this.nomeAleatorio_service = this.palavraCorreta.getPalavraCorreta();
