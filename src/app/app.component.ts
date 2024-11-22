@@ -27,27 +27,26 @@ export class AppComponent {
   // Inicalizando variaveis =======================================================================================================================================
 
   // Nome Proveniente do Services.
-  nomeAleatorio: string = "";
-  // Letras do Nome Proveniente do Services.
-  letras: string[] = [];
+  palavraCorreta: string = "";
+  // String da tentativa que veio proviniente do service.
+  tentativa_service_string: string = "";
+  // Ajuda a definir se todas as 7 linhas já foram preenchidas.
+  qntCompleto: number = 0;
   // Localização da pagina do usuário.
-  isSobrePage = false;
+  isSobrePage: boolean = false;
+  // Ajuda a mostrar a resposta ao completar todas as tentativas.
+  isResposta: boolean = false;
   // Define se a liberação da tentariva linha por linha.
   linhaTentativa: boolean[] = [false, true, true, true, true, true, true];
   // Define se a linha já esta completa ou não.
   linhaCompleta: boolean[] = [false, false, false, false, false, false, false];
-  // Ajuda a definir se todas as 7 linhas já foram preenchidas.
-  qntCompleto: number = 0;
-  // Ajuda a mostrar a resposta ao completar todas as tentativas.
-  isResposta: boolean = false;
 
   // Funções =======================================================================================================================================================
 
   // Ao iniciar a página, já obtemos tanto uma palavra, quanto se estamos em Sobre ou no Novo Jogo.
   ngOnInit(): void {
     // Ao iniciar a página, já pega uma palavra aleatória do service.
-    this.nomeAleatorio = this.palavrasServices.getAleatorioNome();
-    this.letras = this.palavrasServices.getSeparaLetras();
+    this.palavraCorreta = this.palavrasServices.getAleatorioNome();
 
     // Ao iniciar a página, verificamos se estamos em Sobre ou no Novo Jogo.
     this.router.events.pipe(
@@ -74,6 +73,19 @@ export class AppComponent {
           // Libera a próxima linha de tentativa.
           this.linhaTentativa[index + 1] = false;
         }
+      }
+    }
+
+    // Pegando tentativa do usuário direto do service.
+    this.tentativa_service_string = this.tentativa.getTentativa().join("");
+
+    // Verifica se a tentativa for igual a palavra aleatória.
+    if(this.palavraCorreta == this.tentativa_service_string){
+      // Se sim, mostra a resposta correta. e encerra o jogo
+      this.isResposta = true;
+      // Laço de repetição para retirar as tentativas restantes.
+      for (let index = 0; index < this.linhaCompleta.length; index++) {
+        this.linhaTentativa[index] = true;
       }
     }
   }
@@ -107,7 +119,7 @@ export class AppComponent {
 
   // Get para a palavra correta.
   getPalavraCorreta(){
-    return this.nomeAleatorio;
+    return this.palavraCorreta;
   }
 
 }

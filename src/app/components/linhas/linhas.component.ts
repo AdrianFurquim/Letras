@@ -19,7 +19,7 @@ export class LinhasComponent {
   // Variaveis ===========================================================================================================================================
 
   // Resposta correta do service.
-  nomeAleatorio_service: string = "";
+  palavra_correto: string = "";
   // Letras da resposta correta do service.
   letras_correto: string[] = [];
   
@@ -29,9 +29,6 @@ export class LinhasComponent {
   @Input() Ltentativa!: boolean;
   // Linhas tem que verificar se a linha foi completa.
   @Input() completo!: boolean;
-
-  // Opção para conseguir desabilitar a sequência de inputs.
-  desabilitarInputs: boolean = this.Ltentativa;
 
   // Output para fazer modificação no componente pai.
   @Output() completoChange = new EventEmitter<boolean>();
@@ -51,9 +48,9 @@ export class LinhasComponent {
   
   // Ao iniciar o component já fornece a palavra escolhida da vez.
   ngOnInit(): void {
-    this.nomeAleatorio_service = this.palavraCorreta.getPalavraCorreta();
-    this.letras_correto = [this.nomeAleatorio_service[0], this.nomeAleatorio_service[1], this.nomeAleatorio_service[2], 
-                    this.nomeAleatorio_service[3], this.nomeAleatorio_service[4], this.nomeAleatorio_service[5]];
+    this.palavra_correto = this.palavraCorreta.getPalavraCorreta();
+    this.letras_correto = [this.palavra_correto[0], this.palavra_correto[1], this.palavra_correto[2], 
+                    this.palavra_correto[3], this.palavra_correto[4], this.palavra_correto[5]];
   };
 
   // Função para quando teclar 'Enter' irá fazer a correção da tentativa.
