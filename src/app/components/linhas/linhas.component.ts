@@ -1,8 +1,9 @@
 import { Component, ViewChild, ElementRef, HostListener, Input, Output, EventEmitter } from '@angular/core';
-import { PalavrasService } from '../../services/palavras.service';
 import { NgStyle } from '@angular/common';
+
 import { AppComponent } from '../../app.component';
 import { TecladoTentativaService } from '../../services/tecladoTentativa/teclado-tentativa.service';
+import { PalavrasBancoService } from '../../services/palavras/palavras-banco.service';
 
 @Component({
   selector: 'app-linhas',
@@ -14,7 +15,7 @@ import { TecladoTentativaService } from '../../services/tecladoTentativa/teclado
 export class LinhasComponent {
 
   // Construtor. ==========================================================================================================================================
-  constructor(private tentativa: TecladoTentativaService, private palavraCorreta: AppComponent, private palavraService: PalavrasService) { };
+  constructor(private tentativa: TecladoTentativaService, private palavraCorreta: AppComponent, private palavraService: PalavrasBancoService) { };
 
   // Variaveis ===========================================================================================================================================
 

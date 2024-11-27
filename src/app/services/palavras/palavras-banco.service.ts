@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class PalavrasService {
+export class PalavrasBancoService {
 
   // Construtor.
   constructor() { }
@@ -38,10 +38,10 @@ export class PalavrasService {
     "fabula", "eterno", "cidade", "lesado", "futuro", "enredo", "rapina", "agente", "alegre", "ofensa", "acerca", "previa", "adendo", "erario", "contem", "pranto", 
     "acatar", "destra", "oracao", "quiser", "fastio", "umbral", "arguto", "safada", "frouxo", "bebado", "abonar", "contra", "metido", "colhao", "urbano", "fulcro", 
     "nitido", "inocua", "colega", "fadado", "oposto", "abaixo", "amante", "evitar", "charco", "gaiato", "diacho", "descer", "possam", "munido", "animal", "afetar", 
-    "babaca", "dormir", "covado", "lisura", "jardim", "despir", "caucao", "doenca", "trevas", "jocoso", "regido", "entao", "enviar", "conciso", "ativar", "alcada", 
-    "varios", "musica", "letras", "boneca"
+    "babaca", "dormir", "covado", "lisura", "jardim", "despir", "caucao", "doenca", "trevas", "jocoso", "regido", "enviar", "ativar", "alcada", "varios", "musica", 
+    "letras", "boneca", "boneco", "tentar", "menina", "menino", "poeira"
   ];
-  
+
   // Variáveis.
   nomeAleatorio: string = '';
 
@@ -56,7 +56,7 @@ export class PalavrasService {
   // Função para retornar um array com as letras da palavra aleatória escolhida.
   getSeparaLetras(){
     const letras: string[] = [this.nomeAleatorio[0], this.nomeAleatorio[1], this.nomeAleatorio[2], 
-                   this.nomeAleatorio[3], this.nomeAleatorio[4], this.nomeAleatorio[5]];
+                  this.nomeAleatorio[3], this.nomeAleatorio[4], this.nomeAleatorio[5]];
     return letras;
   }
 

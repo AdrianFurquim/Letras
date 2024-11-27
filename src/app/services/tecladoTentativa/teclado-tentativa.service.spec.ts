@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { TecladoTentativaService } from './teclado-tentativa.service';
 
 describe('TecladoTentativaService', () => {

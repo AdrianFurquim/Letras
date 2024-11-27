@@ -4,6 +4,8 @@ div{
     background-color: rgb(58, 58, 58);    
     margin: auto;
     padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     border-radius: 10px;
     margin-top: 1.4em;
 }

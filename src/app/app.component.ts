@@ -9,8 +9,8 @@ import { filter } from 'rxjs/operators';
 
 import { NgIf } from '@angular/common';
 
-import { PalavrasService } from './services/palavras.service';
 import { TecladoTentativaService } from './services/tecladoTentativa/teclado-tentativa.service';
+import { PalavrasBancoService } from './services/palavras/palavras-banco.service';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +22,7 @@ import { TecladoTentativaService } from './services/tecladoTentativa/teclado-ten
 export class AppComponent {
 
   // Construtor ===================================================================================================================================================
-  constructor(private palavrasServices: PalavrasService, private router: Router, private route: ActivatedRoute, private tentativa: TecladoTentativaService) { }
+  constructor(private palavrasServices: PalavrasBancoService, private router: Router, private route: ActivatedRoute, private tentativa: TecladoTentativaService) { }
   
   // Inicalizando variaveis =======================================================================================================================================
 
