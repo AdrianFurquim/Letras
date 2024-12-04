@@ -52,6 +52,7 @@ export class LinhasComponent {
     this.palavra_correto = this.palavraCorreta.getPalavraCorreta();
     this.letras_correto = [this.palavra_correto[0], this.palavra_correto[1], this.palavra_correto[2], 
                     this.palavra_correto[3], this.palavra_correto[4], this.palavra_correto[5]];
+    console.log(this.palavra_correto)
   };
 
   // Função para quando teclar 'Enter' irá fazer a correção da tentativa.
@@ -82,7 +83,7 @@ export class LinhasComponent {
   
         // For para verificar se a letra está no lugar correto, caso correto, transforma em verde.
         for (let i = 0; i < this.letras_correto.length; i++) {
-  
+
           // Verifica se a letra da tentativa esta alinhada com a correta.
           if (resposta[i].toUpperCase() == this.letras_correto[i].toUpperCase()) {
             this.background_letra[i] = "rgba(0, 255, 0, 0.808)";
@@ -93,7 +94,11 @@ export class LinhasComponent {
   
               // Verifica se a letra da tentativa esta ao menos na palavra correta.
               if (resposta[j].toUpperCase() == this.letras_correto[i].toUpperCase()) {
-                this.background_letra[j] = "rgba(255, 255, 0, 0.74)";
+
+                // Verifica se a letra já não esta verde.
+                if(this.background_letra[j] != "rgba(0, 255, 0, 0.808)"){
+                  this.background_letra[j] = "rgba(255, 255, 0, 0.74)";
+                }
               }
             }
           }
