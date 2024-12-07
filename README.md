@@ -33,8 +33,6 @@ O jogo web "Letras" desafia você a adivinhar uma palavra de seis letras em até
    ng serve
 4. Agora é só jogar e se divertir!
 
-   Equipe composta por:
-
 ## Equipe
 
 - **Adrian Eduardo Furquim de Souza**
