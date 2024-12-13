@@ -26,13 +26,18 @@ export class TecladoComponent {
   letras_correto: string[] = [];
   // Opção para mudar o backround das teclas.
   background_tecla: string[] =  [];
+  // Opção para mudar o a cor das letras das teclas.
+  color_tecla: string[] =  [];
 
+  // Ao iniciar o component, armazena a palavra sorteada.
+  // Faz iniciação o background e do color das teclas.
   ngOnInit(): void {
     this.nomeAleatorio_service = this.palavraCorreta.getPalavraCorreta();
     this.letras_correto = [this.nomeAleatorio_service[0], this.nomeAleatorio_service[1], this.nomeAleatorio_service[2], 
                     this.nomeAleatorio_service[3], this.nomeAleatorio_service[4], this.nomeAleatorio_service[5]];
     for (let i = 0; i <= 25; i++) {
       this.background_tecla.push("rgb(54, 54, 54)");
+      this.color_tecla.push("rgb(255, 255, 255)")
     }
   };
 
@@ -53,7 +58,9 @@ export class TecladoComponent {
         if (this.teclas[i] == this.tentativa_service[j].toUpperCase()) {
 
           // Garante que independentemente a letra será retirada caso não passe nos próximos IFs.
-          this.background_tecla[i] = "black";
+          // Mudando a cor da letra e do dundo para transparente.
+          this.background_tecla[i] = "rgba(124, 124, 124, 0.322)";
+          this.color_tecla[i] = "rgb(255, 255, 255, 0.5)"
           
           // For para rodar o array das letras corretas da resposta.
           for (let k = 0; k < this.letras_correto.length; k++) {
@@ -63,6 +70,8 @@ export class TecladoComponent {
 
               // Muda a cor e acaba o loop da letra.
               this.background_tecla[i] = "green";
+              // Volta para a cor de letra normal.
+              this.color_tecla[i] = "rgb(255, 255, 255)";
               break;
 
             }else{
@@ -74,6 +83,8 @@ export class TecladoComponent {
 
                     // Muda a cor e acaba o loop da letra.
                     this.background_tecla[i] = "rgba(255, 255, 0, 0.74)";
+                    // Volta para a cor de letra normal.
+                    this.color_tecla[i] = "rgb(255, 255, 255)";
                     break;
                   }
                 }

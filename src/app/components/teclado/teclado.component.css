@@ -1,6 +1,6 @@
 div{
     display: flex;
-    gap: 0.5em;
+    gap: 0.2em;
     justify-content: center;
     height: 4em;
 }
@@ -9,9 +9,10 @@ p{
     background-color: rgb(124, 124, 124);
     text-align: center;
     align-items: center;
-    padding: 5px;
+    padding: 8px;
     width: 1em;
     height: 1em;
-    font-size: 2em;
+    font-size: 1.5em;
     border-radius: 10px;
+    border: 3px solid rgb(34, 34, 34);
 }

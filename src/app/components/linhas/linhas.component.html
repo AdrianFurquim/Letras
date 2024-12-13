@@ -1,6 +1,9 @@
 <div class="linha">
 
-   <input [ngStyle]="{ 'background-color': Ltentativa ? background_letra[0] : '' }"
+   <input [ngStyle]="{ 
+            'background-color': Ltentativa ? background_letra[0] : '', 
+            'border' : border_letra[0]
+        }"
        type="text"
        name="letra1"
        id="letra1"
@@ -11,7 +14,10 @@
        (keydown)="moverAnteriorInput($event, null, letra1Input, letra2Input)"
        [disabled]="Ltentativa">
 
-   <input [ngStyle]="{ 'background-color': background_letra[1] }"
+   <input [ngStyle]="{ 
+            'background-color': background_letra[1], 
+            'border' : border_letra[1]
+        }"
        type="text"
        name="letra2"
        id="letra2"
@@ -22,7 +28,10 @@
        (keydown)="moverAnteriorInput($event, letra1Input, letra2Input, letra3Input)"
        [disabled]="Ltentativa">
        
-   <input [ngStyle]="{ 'background-color': background_letra[2] }"
+   <input [ngStyle]="{ 
+            'background-color': background_letra[2], 
+            'border' : border_letra[2]
+        }"
        type="text"
        name="letra3"
        id="letra3"
@@ -33,7 +42,10 @@
        (keydown)="moverAnteriorInput($event, letra2Input, letra3Input, letra4Input)"
        [disabled]="Ltentativa">
        
-   <input [ngStyle]="{ 'background-color': background_letra[3] }"
+   <input [ngStyle]="{ 
+            'background-color': background_letra[3], 
+            'border' : border_letra[3]
+        }"
        type="text"
        name="letra4"
        id="letra4"
@@ -44,7 +56,10 @@
        (keydown)="moverAnteriorInput($event, letra3Input, letra4Input, letra5Input)"
        [disabled]="Ltentativa">
        
-   <input [ngStyle]="{ 'background-color': background_letra[4] }"
+   <input [ngStyle]="{ 
+            'background-color': background_letra[4], 
+            'border' : border_letra[4]
+        }"
        type="text"
        name="letra5"
        id="letra5"
@@ -55,7 +70,10 @@
        (keydown)="moverAnteriorInput($event, letra4Input, letra5Input, letra6Input)"
        [disabled]="Ltentativa">
        
-   <input [ngStyle]="{ 'background-color': background_letra[5] }"
+   <input [ngStyle]="{ 
+            'background-color': background_letra[5], 
+            'border' : border_letra[5]
+        }"
        type="text"
        name="letra6"
        id="letra6"

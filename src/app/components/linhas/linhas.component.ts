@@ -44,6 +44,9 @@ export class LinhasComponent {
 
   // Background dos inputs para correção de letras.
   background_letra: string[] =  ["rgb(54, 54, 54)", "rgb(54, 54, 54)", "rgb(54, 54, 54)", "rgb(54, 54, 54)", "rgb(54, 54, 54)", "rgb(54, 54, 54)"];
+  // Border para modificar a borda conforme a correção das letras
+  border_letra: string[] = ["4px solid rgb(124, 124, 124)", "4px solid rgb(124, 124, 124)", "4px solid rgb(124, 124, 124)", "4px solid rgb(124, 124, 124)",
+   "4px solid rgb(124, 124, 124)", "4px solid rgb(124, 124, 124)"]
 
   // Funções. =============================================================================================================================================
   
@@ -86,7 +89,9 @@ export class LinhasComponent {
 
           // Verifica se a letra da tentativa esta alinhada com a correta.
           if (resposta[i].toUpperCase() == this.letras_correto[i].toUpperCase()) {
+            /// Muda o background e a borda da letra.
             this.background_letra[i] = "rgba(0, 255, 0, 0.808)";
+            this.border_letra[i] = "4px solid rgba(0, 167, 0, 0.808)"
           } else {
   
             // For para verificar se a letra pelo menos existe na palavra, caso a letra exista, mas lugar errado, transforma em amarelo.
@@ -97,7 +102,9 @@ export class LinhasComponent {
 
                 // Verifica se a letra já não esta verde.
                 if(this.background_letra[j] != "rgba(0, 255, 0, 0.808)"){
+                  /// Muda o background e a borda da letra.
                   this.background_letra[j] = "rgba(255, 255, 0, 0.74)";
+                  this.border_letra[j] = "4px solid rgba(201, 201, 11, 0.74)"
                 }
               }
             }
