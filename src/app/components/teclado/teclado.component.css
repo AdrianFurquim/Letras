@@ -6,7 +6,7 @@ div{
 }
 
 p{
-    background-color: rgb(124, 124, 124);
+    background-color: rgb(54, 54, 54);
     text-align: center;
     align-items: center;
     padding: 8px;
@@ -15,4 +15,22 @@ p{
     font-size: 1.5em;
     border-radius: 10px;
     border: 3px solid rgb(34, 34, 34);
+}
+
+.backspace{
+    width: 1.5em;
+    height: 1em;
+    margin-left: 0.6em;
+}
+
+.backspace svg{
+    width: 1.3em;
+    height: 1.3em;
+    margin-top: -0.16em;
+}
+
+.enter{
+    width: 3em;
+    text-align: center;
+    margin-left: 0.6em;
 }

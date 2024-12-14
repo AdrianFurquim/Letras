@@ -11,6 +11,8 @@
   </div>
 </h1>
 
+<br><br>
+
 <div *ngIf="!isSobrePage">
   <!-- Cada linha precisa ser bloqueada e desbloqueada conforme a tentativa. -->
   <app-linhas [id]="1" [Ltentativa]="linhaTentativa[0]" [completo]="linhaCompleta[0]" (completoChange)="atualizarCompleto(0, $event)"></app-linhas>
@@ -23,3 +25,6 @@
 </div>
 
 <app-teclado *ngIf="!isSobrePage"></app-teclado>
+
+<br><br>
+<br><br>
